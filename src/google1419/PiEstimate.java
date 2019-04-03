@@ -2,13 +2,18 @@ package google1419;
 
 public class PiEstimate {
 	
-	int runs = 1000000;
-	
-	double inCount = 0;
-	double shot = 0;
 	double pi;
+	int runs;
+	double inCount, shot;
 	
 	public PiEstimate(){
+		inCount = 0;
+		shot = 0;
+	}
+	
+	public double calculate(int num) {
+		
+		runs = num;
 		
 		for(int i = 0; i < runs; i++) {
 		
@@ -20,12 +25,20 @@ public class PiEstimate {
 			if(d < 1) inCount++;
 		
 			pi = (inCount/shot) * 4;
-		
 		}
 		
-		System.out.println("Pi calculated as " + pi + " with " + runs + " runs!");
+		System.out.println("count = " + (int)inCount + "... shot = " + (int)shot + "... pi = "  + pi);
+		return pi;
 	}
-
+	
+	public void resetCounts() {
+		inCount = 0;
+		shot = 0;
+	}
+	
+	public String getInfo() {
+		return "Shots : "+ (int)shot + "  ---  Hit : " + (int)inCount;
+	}
 }
 
 
